@@ -1,0 +1,21 @@
+name: "Alert for central ci >= Crit"
+es_host: elasticsearch.perf.lab.eng.bos.redhat.com
+es_port: 80
+use_strftime_index: true
+index: "logstash-%Y.%m.%d"
+type: frequency
+num_events: 1
+timeframe:
+    minutes: 5
+filter:
+- query:
+    query_string:
+      query: "tags:central-ci* AND (level:crit OR level:alert OR level:emerg)"
+alert:
+- "email"
+alert_subject: "central ci alert {0} - {1}"
+alert_subject_args:
+- level
+- message
+email:
+- "nelluri@redhat.com"

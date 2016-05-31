@@ -1,0 +1,20 @@
+name: "New IP Alert"
+es_host: elasticsearch.perf.lab.eng.bos.redhat.com
+es_port: 80
+use_strftime_index: true
+index: "logstash-%Y.%m.%d"
+type: new_term
+fields:
+- "rsyslog.fromhost-ip"
+terms_window_size:
+  days: 1
+alert:
+- "email"
+alert_text: |
+    Elastalert has detected a new IP address at {0} -{1}
+alert_text_args:
+  - "@timestamp"
+  - hostname
+email:
+- "nelluri@redhat.com"
+                                  
