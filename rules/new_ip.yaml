@@ -1,5 +1,5 @@
 name: "New IP Alert"
-es_host: elasticsearch.perf.lab.eng.bos.redhat.com
+es_host: elasticsearch_host
 es_port: 80
 use_strftime_index: true
 index: "logstash-%Y.%m.%d"
