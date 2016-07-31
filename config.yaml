@@ -14,7 +14,7 @@ buffer_time:
 
 # The elasticsearch hostname for metadata writeback
 # Note that every rule can have it's own elasticsearch host
-es_host: elasticsearch.perf.lab.eng.Bos.redhat.com
+es_host: elasticsearch_host
 
 # The elasticsearch port
 es_port: 80
