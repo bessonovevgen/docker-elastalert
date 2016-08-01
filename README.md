@@ -1,5 +1,5 @@
 # Docker ElastAlert
-Docker container for elastalert.
+Containerized elastalert.
 
 ## Building
 You can build the container like
@@ -16,4 +16,5 @@ By default an index named elastalert_status is created in your elasticsearch ins
 
 ## Alerting
 Depending on your desired alerts you may need to mount files into the container. For example:
+
 $ docker run -v "$PWD/rules:/opt/elastalert/rules" -e "ELASTICSEARCH_HOST=some.elasticsearch.host.com" -e "ELASTICSEARCH_PORT=9200" elastalert
