@@ -2,15 +2,15 @@
 FROM fedora
 MAINTAINER nelluri@redhat.com
 
+ENV ELASTALERT_HOME /opt/elastalert
+ENV RULES_DIR /opt/elastalert/rules
+
 RUN dnf -y update && \
     dnf -y install unzip tar wget vim git make gcc readline-devel pcre-devel openssl-devel python-pip python redhat-rpm-config gcc-c++ python-devel && \
     dnf clean all && cd /opt && wget https://github.com/Yelp/elastalert/archive/master.zip && \
     unzip -- *.zip && \
     mv -- elast* ${ELASTALERT_HOME} && \
     rm -- *.zip
-
-ENV ELASTALERT_HOME /opt/elastalert
-ENV RULES_DIR /opt/elastalert/rules
 
 WORKDIR ${ELASTALERT_HOME}
 RUN mkdir -p ${RULES_DIR} && python setup.py install && \
